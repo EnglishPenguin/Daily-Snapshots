@@ -106,7 +106,7 @@ def run():
     mail.Subject = f'Medicare Not Primary Daily Snapshot - {fd_MM_DD_YYYY}'
     mail.HTMLBody = html_body
     mail.To = 'denglish2@northwell.edu'
-    mail.CC = 'mliffland2@northwell.edu, cgilroy@northwell.edu'
+    mail.CC = 'mliffland2@northwell.edu; cgilroy@northwell.edu'
 
     # Attach the bar graph file
     # attachment = mail.Attachments.Add(Source=bar_graph_filename)

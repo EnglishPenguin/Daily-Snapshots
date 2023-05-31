@@ -101,7 +101,7 @@ def run():
     mail.Subject = f'ClaimsManager 1235 Daily Snapshot - {fd_MM_DD_YYYY}'
     mail.HTMLBody = html_body
     mail.To = 'denglish2@northwell.edu'
-    # mail.CC = 'klawrence3@northwell.edu, ovicuna@northwell.edu, jcarney1@northwell.edu, gbunce@northwell.edu, mpuma@northwell.edu'
+    mail.CC = 'klawrence3@northwell.edu; ovicuna@northwell.edu; jcarney1@northwell.edu; gbunce@northwell.edu; mpuma@northwell.edu'
 
     # Attach the bar graph file
     attachment = mail.Attachments.Add(Source=bar_graph_filename)
