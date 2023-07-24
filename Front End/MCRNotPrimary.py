@@ -43,6 +43,7 @@ def run():
 
     df2 = pd.DataFrame(df,columns=['INVNUM', 'StatusCode_Description', 'Business Status'])
     df2 = df2[df2['Business Status'] == 'Exception']
+    df2.drop('Business Status', axis=1, inplace=True)
     df2 = df2.sort_values(by='StatusCode_Description', ascending=False)
     df2.rename(columns={'INVNUM': 'Account Number', 'StatusCode_Description': 'Exception Description'}, inplace=True)
     html_table = df2.to_html(index=False, classes="dataframe", border=2, justify="center")
@@ -54,6 +55,7 @@ def run():
     business_status_counts = df['Business Status'].value_counts()
     business_status_percentage = business_status_counts / total_rows * 100
     business_status_percentage = business_status_percentage.round(2)
+    exception_percentage = business_status_percentage.get('Exception', 0.0)
 
     # Create a bar graph for the different Status Codes
     status_code_counts = df['RetrievalDescription'].value_counts()
@@ -94,7 +96,7 @@ def run():
     html_body += f"""
     <strong>Rate for each Business Status:</strong><br>
     Success Rate - {business_status_percentage['Success']}%<br>
-    Exception Rate - {business_status_percentage['Exception']}%<br><br>
+    Exception Rate - {exception_percentage}%<br><br>
     <strong>List of Exceptions:</strong>
     {html_table}
     """

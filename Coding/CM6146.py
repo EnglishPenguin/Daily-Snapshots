@@ -39,6 +39,7 @@ def run():
 
     df2 = pd.DataFrame(df,columns=['INVNUM', 'CRN#', 'StatusCode_Description', 'Business Status'])
     df2 = df2[df2['Business Status'] == 'Exception']
+    df2.drop('Business Status', axis=1, inplace=True)
     df2 = df2.sort_values(by='StatusCode_Description', ascending=False)
     df2.rename(columns={'INVNUM': 'Encounter Number', 'CRN#': 'Transaction Number', 'StatusCode_Description': 'Exception Description'}, inplace=True)
     html_table = df2.to_html(index=False, classes="dataframe", border=2, justify="center")

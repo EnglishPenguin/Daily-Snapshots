@@ -38,6 +38,7 @@ def run():
 
     df2 = pd.DataFrame(df,columns=['POLICYID', 'StatusCode_Description', 'Business Status'])
     df2 = df2[df2['Business Status'] == 'Exception']
+    df2.drop('Business Status', axis=1, inplace=True)
     df2 = df2.sort_values(by='StatusCode_Description', ascending=False)
     df2.rename(columns={'POLICYID': 'Account Number', 'StatusCode_Description': 'Exception Description'}, inplace=True)
     html_table = df2.to_html(index=False, classes="dataframe", border=2, justify="center")
@@ -49,6 +50,7 @@ def run():
     business_status_counts = df['Business Status'].value_counts()
     business_status_percentage = business_status_counts / total_rows * 100
     business_status_percentage = business_status_percentage.round(2)
+    exception_percentage = business_status_percentage.get('Exception', 0.0)
 
     # Create a bar graph for the different Status Codes
     status_code_counts = df['StatusCode'].value_counts()
@@ -81,12 +83,12 @@ def run():
 
     # Generate HTML for each item in status_code_counts
     for index, count in status_code_counts.items():
-        html_body += f"<p>{index}: {count}</p>"
+        html_body += f"{index}: {count}<br>"
 
     html_body += f"""
-    <p><strong>Rate for each Business Status:</strong></p>
-    <p>Success Rate - {business_status_percentage['Success']}%</p>
-    <p>Exception Rate - {business_status_percentage['Exception']}%</p><br>
+    <p><strong>Rate for each Business Status:</strong><br>
+    Success - {business_status_percentage['Success']}%<br>
+    Exception - {exception_percentage}%</p>
     <strong>List of Exceptions:</strong>
     {html_table}
     """
@@ -98,10 +100,10 @@ def run():
     mail.Subject = f'Itemized Statements Daily Snapshot - {fd_MM_DD_YYYY}'
     mail.HTMLBody = html_body
     mail.To = 'denglish2@northwell.edu'
-    mail.CC = 'rmuncipinto@northwell.edu'
+    mail.CC = 'rmuncipinto@northwell.edu; nmitrako@northwell.edu; ttaylor6@northwell.edu; dbenjamin3@northwell.edu; tclouden@northwell.edu; djoseph8@northwell.edu'
 
     # Attach the bar graph file
-    attachment = mail.Attachments.Add(Source=bar_graph_filename)
+    # attachment = mail.Attachments.Add(Source=bar_graph_filename)
     mail.Send()
 
 if __name__ == '__main__':
