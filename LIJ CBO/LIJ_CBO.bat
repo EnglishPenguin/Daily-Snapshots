@@ -4,6 +4,8 @@ SETLOCAL
 set FILE_PATH=%~dp0
 set SCRIPT_PATH=%FILE_PATH%Itemized_Statement.py
 python -u "%SCRIPT_PATH%"
+set SCRIPT_PATH=%FILE_PATH%NCOA.py
+python -u "%SCRIPT_PATH%"
 ENDLOCAL
 
 @Echo Process Completed.
