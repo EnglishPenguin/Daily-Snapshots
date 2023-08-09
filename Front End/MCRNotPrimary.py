@@ -86,6 +86,7 @@ def run():
 
     html_body = f"""
     <p><strong>Total Cases Processed:</strong> {total_rows}</p>
+    <p>Link to File can be found: <a href="file:///{file_path}/eCareNext_SOARIAN_Outbound_{fd_MMDDYYYY}.xlsx">here</a></p>
     <p><strong>Count for each Retrieval Description:</strong></p>
     """
 

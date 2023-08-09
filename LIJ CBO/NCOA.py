@@ -87,8 +87,19 @@ def run():
                 business_status_rate_text += f"{index} Rate - {count}%\n"
 
             # Start of body text for email; shows total num of files processed and total cases processed 
+            
             html_body = f"""
-            <p><strong>Total Files Processed:</strong> {num_files}</p>
+            <p><strong>Total Files Processed:</strong> {num_files}<br>
+            Links to File(s) can be found below:</p>
+            """
+            
+            if len(file) > 1:
+                for num in range(1,len(file)+1):
+                    html_body += f"""<p><a href="file:///{file_path}/{fd_YYYYMMDD}.NSH.NCOA{num}_OUTBOUND.xlsx">Link to File Number {num}</a></p>"""
+            else:
+                html_body += f"""<p><a href="file:///{file_path}/{fd_YYYYMMDD}.NSH.NCOA_OUTBOUND.xlsx">Link to File</a></p>"""
+            
+            html_body += f"""
             <p><strong>Total Cases Processed:</strong> {total_rows}</p>
             <p><strong>Count for each Retrieval Description:</strong></p>
             """
@@ -113,7 +124,7 @@ def run():
             mail.Subject = f'NCOA Daily Snapshot - {fd_MM_DD_YYYY}'
             mail.HTMLBody = html_body
             mail.To = 'denglish2@northwell.edu'
-            # mail.CC = 'rmuncipinto@northwell.edu; nmitrako@northwell.edu'
+            mail.CC = 'rmuncipinto@northwell.edu; nmitrako@northwell.edu'
 
             mail.Send()
     
@@ -131,7 +142,7 @@ def run():
         mail.Subject = f'NCOA Daily Snapshot - {fd_MM_DD_YYYY}'
         mail.HTMLBody = html_body
         mail.To = 'denglish2@northwell.edu'
-        # mail.CC = 'rmuncipinto@northwell.edu; nmitrako@northwell.edu'
+        mail.CC = 'rmuncipinto@northwell.edu; nmitrako@northwell.edu'
 
         mail.Send()
 
