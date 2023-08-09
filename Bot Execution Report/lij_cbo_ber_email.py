@@ -70,7 +70,7 @@ def run():
     mail.Subject = f'Bot Execution Report - {fd_MM_DD_YYYY}'
     mail.HTMLBody = html_body
     mail.To = 'denglish2@northwell.edu'
-    # mail.CC = 'rmuncipinto@northwell.edu; nmitrako@northwell.edu; ttaylor6@northwell.edu; dbenjamin3@northwell.edu; tclouden@northwell.edu; djoseph8@northwell.edu'
+    mail.CC = 'rmuncipinto@northwell.edu; nmitrako@northwell.edu'
 
     # Attach the bar graph file
     # attachment = mail.Attachments.Add(Source=bar_graph_filename)
