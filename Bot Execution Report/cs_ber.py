@@ -97,7 +97,7 @@ def run():
         all_dfs.append(table1_df)
 
     # set the writer for the file. appends to an already created file
-    writer = pd.ExcelWriter(f'{FILEPATH}/Batch Execution Report Archive.xlsx', engine='openpyxl', mode='a', if_sheet_exists='overlay')
+    writer = pd.ExcelWriter(f'{FILEPATH}/Bot Execution Report - RAW Data.xlsx', engine='openpyxl', mode='a', if_sheet_exists='overlay')
 
     cs_df = pd.DataFrame(columns=table1_columns)
 

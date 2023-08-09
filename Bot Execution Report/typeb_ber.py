@@ -118,7 +118,7 @@ def run():
     df['Date'] = pd.to_datetime(df['Date'], errors='coerce', dayfirst=False)
 
     # set the writer for the file. appends to an already created file
-    writer = pd.ExcelWriter(f'{FILEPATH}/Batch Execution Report Archive.xlsx', engine='openpyxl', mode='a', if_sheet_exists='overlay')
+    writer = pd.ExcelWriter(f'{FILEPATH}/Bot Execution Report - RAW Data.xlsx', engine='openpyxl', mode='a', if_sheet_exists='overlay')
 
     # Write the even data frame to the "Claim Status Bots" sheet
     df.to_excel(writer, sheet_name='Type B Bots', index=False)
