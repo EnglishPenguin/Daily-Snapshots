@@ -14,7 +14,7 @@ def run():
     df = pd.read_excel(COMB_FILE_PATH, sheet_name="Type B Bots", engine="openpyxl")
 
     df_ncoa = df[df['BotName'].str.contains('Patient.*Address.*Update*', regex=True)]
-    df_statement = df[df['BotName'].str.contains('Printing.*Itemized*', regex=True)]
+    df_statement = df[df['BotName'].str.contains('Printing.*Itemized*', regex=True)& ~df['BotName'].str.contains('BadDebt-', regex=False)]
 
     df_list = [df_ncoa, df_statement]
 
@@ -72,8 +72,6 @@ def run():
     mail.To = 'denglish2@northwell.edu'
     mail.CC = 'rmuncipinto@northwell.edu; nmitrako@northwell.edu'
 
-    # Attach the bar graph file
-    # attachment = mail.Attachments.Add(Source=bar_graph_filename)
     mail.Send()
 
 if __name__ == '__main__':
