@@ -129,8 +129,8 @@ class Snapshot():
         
         self.email_body += f"""
         <strong>Rate for each Business Status:</strong><br>
-        Success Rate - {self.business_status_percentage['Success']}%<br>
-        Exception Rate - {self.business_status_percentage['Exception']}%<br><br>
+        Success Rate - {self.business_status_percentage.get('Success', 0.0)}%<br>
+        Exception Rate - {self.business_status_percentage.get('Exception', 0.0)}%<br><br>
         <strong>List of Exceptions:</strong>
         {self.html_table}
         """
