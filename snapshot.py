@@ -59,14 +59,21 @@ class Snapshot():
             logger.info('getting counts')
             self.get_results()
             logger.info('writing email body')
-            self.write_email_body()
+            if self.use_case == "NCOA":
+                self.write_ncoa_email_body()
+            else:
+                self.write_email_body()
             logger.info('creating and sending email')
-            self.compose_and_send_email()
+            if len(self.df_unknown) != 0:
+                logger.critical(f'email not sent for {self.use_case} please review')
+            else:
+                self.compose_and_send_email()
 
 
     def get_file(self):
         if self.use_case == "NCOA":
             self.files_list = glob(self.name_format)
+            self.file_list_range = len(self.files_list) + 1
             if len(self.files_list) == 0:
                 pass
             else:
@@ -89,6 +96,12 @@ class Snapshot():
     def apply_business_rules(self):
         self.df_snapshot['Business Status'] = self.df_snapshot.apply(lambda row: self.get_business_status(row), axis=1)
         self.df_snapshot['Business Scenario'] = self.df_snapshot.apply(lambda row: self.get_business_scenario(row), axis=1)
+        self.df_unknown = pd.DataFrame(self.df_snapshot)
+        self.df_unknown = self.df_unknown[self.df_unknown['Business Status'] == 'Unknown']
+        if len(self.df_unknown) != 0:
+            logger.info('pulling out unknown scenarios for additional review')
+            pd.DataFrame.to_excel(self.df_unknown, excel_writer=f"C:/Users/denglish2/Desktop/Daily Snapshot/{self.use_case} unknown scenarios.xlsx")
+            logger.critical(f'Please review  {self.use_case} unknown scenario.xlsx for unhandled results and configure to mappings dictionary')
 
     def get_business_status(self, row):
         # based on mappings status crosswalk, retrievel relevant business status
@@ -107,8 +120,8 @@ class Snapshot():
         self.business_status_percentage = self.business_status_counts / self.total_rows * 100
         self.business_status_percentage = self.business_status_percentage.round(2)
 
-        self.rd_reason_counts = self.df_snapshot['RD + Reason'].value_counts()
-
+        self.rd_reason_counts = self.df_snapshot['Business Scenario'].value_counts()
+        
         self.get_exceptions()
 
     def get_exceptions(self):
@@ -116,8 +129,36 @@ class Snapshot():
         self.df_exceptions = self.df_exceptions[self.df_exceptions['Business Status'] == 'Exception']
         self.df_exceptions.drop(columns=self.drop_columns, axis=1, inplace=True)
         self.df_exceptions = self.df_exceptions.sort_values(by='Business Scenario', ascending=False)
-        self.html_table = self.df_exceptions.to_html(index=False, classes="dataframe", border=2, justify="center")
-    
+        self.html_table  = self.df_exceptions.to_html(index=False, classes="dataframe", border=2, justify="center")
+
+    def write_ncoa_email_body(self):
+        logger.debug("attempting to write NCOA email body")
+        self.ind_name_format_str = mappings.mappings_dict[f"{self.use_case}"]["ind_name_format"]
+        self.email_body = f"""
+        <p><strong>Total Cases Processed:</strong> {self.total_rows}</p>
+        """
+
+        for number in range(1,self.file_list_range):
+            self.ind_name_format = self.ind_name_format_str.format(
+                file_path=self.file_path,
+                month_str=self.month_str,
+                day_str=self.day_str,
+                year_str=self.year_str,
+                index_num=number
+            )
+            self.email_body += f"""<p>Link to File Number {number} can be found: <a href="file:///{self.ind_name_format}">here</a></p>"""
+        
+        for index, count in self.rd_reason_counts.items():
+                self.email_body += f"<p>{index}: {count}</p>"
+        
+        self.email_body += f"""
+        <strong>Rate for each Business Status:</strong><br>
+        Success Rate - {self.business_status_percentage.get('Success', 0.0)}%<br>
+        Exception Rate - {self.business_status_percentage.get('Exception', 0.0)}%<br><br>
+        <strong>List of Exceptions:</strong>
+        {self.html_table}
+        """
+            
     def write_email_body(self):
         self.email_body = f"""
         <p><strong>Total Cases Processed:</strong> {self.total_rows}</p>
