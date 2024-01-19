@@ -361,6 +361,7 @@ mappings_dict = {
             "Crosswalk Discrepancy - Non-HDX Payer":"Exception",
             "End-to-End Success - MCD MCO Policy Added":"Success",
             "Unspecified Technical Failure - ":"Exception",
+            "BE01-An Attending Physician is required. - BE01-An Attending Physician is required.":"Exception",
         },
         "scenario_crosswalk": {
             "C00-Completed - C00-Completed":"End-to-end Success; MCD MCO Added",
@@ -397,6 +398,7 @@ mappings_dict = {
             "Crosswalk Discrepancy - Non-HDX Payer":"When the bot works NON-HDX crosswalk values",
             "End-to-End Success - MCD MCO Policy Added":"Successful transaction (end-to-end)",
             "Unspecified Technical Failure - ":"When the bot comes to a halt due to an unhandled exception",
+            "BE01-An Attending Physician is required. - BE01-An Attending Physician is required.":"Pop Up - Attending Physician",
         },
         "column_crosswalk": {
             "MRN": "Enc Number",
@@ -490,7 +492,7 @@ mappings_dict = {
             "E16-Failed to select the patient - E16-Failed to select the patient":"Technical Error prevented selecting the patient in Soarian",
             "E16-Failed to enter the account number into search box - E16-Failed to enter the account number into search box":"Technical Error prevented bot from entering encounter number",
             "BE01-Revise Encounter Details Option Not Found - BE01-Revise Encounter Details Option Not Found":"Revised Encounter hyperlink not available",
-            "E16-Coverage Tab is Empty - E16-Coverage Tab is Empty":"Data not found in eCareNext",
+            "E16-Coverage Tab is Empty - E16-Coverage Tab is Empty":"Technical error prevented data from being found in eCareNext",
             "E16-The Policy Number Does Not Match - E16-The Policy Number Does Not Match":"Pop Up - Invalid Policy Number Format",
             "BE01-The Policy Number Does Not Match - BE01-The Policy Number Does Not Match":"Pop Up - Invalid Policy Number Format",
             "New/Unexpected Screen Element - Revise Encounter Details":"Revise Encounter Details not available in Soarian",
@@ -631,6 +633,8 @@ mappings_dict = {
             "Known Pop Up - Special Characters found":"Exception",
             "End-to-End Success - Medicare Moved to Secondary":"Success",
             "Unspecified Technical Failure - ":"Exception",
+            "C00-Health plans reordered - C00-Health plans reordered":"Success",
+            "BE01-An Attending Physician is required. - BE01-An Attending Physician is required.":"Exception",
         },
         "scenario_crosswalk": {
             "C00-Health plans reordered - ":"End-to-end Success; Plans reordered",
@@ -651,6 +655,8 @@ mappings_dict = {
             "Known Pop Up - Special Characters found":"Bot encounters special characters pop up",
             "End-to-End Success - Medicare Moved to Secondary":"Medicare Moved to Secondary",
             "Unspecified Technical Failure - ":"Bot comes to a halt due to an unhandled exception",
+            "C00-Health plans reordered - C00-Health plans reordered":"End-to-end Success; Plans reordered",
+            "BE01-An Attending Physician is required. - BE01-An Attending Physician is required.":"Pop Up - Attending Physician",
         },
         "column_crosswalk": {
             "INVNUM": "Enc Number",
@@ -739,7 +745,6 @@ mappings_dict = {
         "columns": [
             "PTFULLNAME",
             "INVNUM",
-            "CRN#",
             "RetrievalStatus",
             "RetrievalDescription",
             "Reason",
@@ -766,10 +771,12 @@ mappings_dict = {
             "New/Unexpected Screen Element - Soarian":"Exception",
             "Account Not Found - No Patient Found":"Exception",
             "End-to-End Success - Address Updated in Soarian":"Success",
+            "C00:Address Already Exist - Address Already Exist": "Success",
+            "BE01:Invalid Zipcode - Invalid Zipcode": "Exception",
         },
         "scenario_crosswalk": {
             "C00:New address Added successfully - ": "End-to-end Success; Address Added",
-            "E07-Mandatory fields are missing in the received input - ": "Missing Mandatory Files on Input",
+            "E07-Mandatory fields are missing in the received input - ": "Input does not provide the mandatory data (EPI)",
             "C00:Address Already Exist - ": "Address already updated",
             "BE01:Invalid Zipcode - ": "Invalid Zip Code",
             "Invalid Input - Invalid EPI":"External Person ID value is not in the expected format",
@@ -786,19 +793,20 @@ mappings_dict = {
             "New/Unexpected Screen Element - Soarian":"Bot encounters a new/unexpected screen element",
             "Account Not Found - No Patient Found":"No matching values found in the system",
             "End-to-End Success - Address Updated in Soarian":"Bot Successfully updates the Address",
+            "C00:Address Already Exist - Address Already Exist": "New Address already in Soarian for Patient",
+            "BE01:Invalid Zipcode - Invalid Zipcode": "System does not auto-populate the city, country and county values after entering the zip code",
         },
         "column_crosswalk": {
             "PTFULLNAME": "Patient Name",
-            "INVNUM": "Enc Number",
-            "CRN#": "Txn Number",
+            "INVNUM": "EDI",
             "RetrievalStatus": "Retrieval Status",
             "RetrievalDescription": "Retrieval Description",
             "Reason": "Reason",
         },
         "carbon_copy": 'rmuncipinto@northwell.edu; nmitrako@northwell.edu',
         "name_format": "{file_path}/{year_str}{month_str}{day_str}*OUTBOUND.xlsx",
+        "ind_name_format": "{file_path}/{year_str}{month_str}{day_str}.NSH.NCOA{index_num}_OUTBOUND.xlsx",
         "drop_columns": [
-            'Patient Name', 
             'Retrieval Status', 
             'Retrieval Description', 
             'Reason', 
@@ -913,5 +921,5 @@ mappings_dict = {
     #         'Business Status'
     #     ],
     # },
-    
 }
+
