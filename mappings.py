@@ -362,6 +362,23 @@ mappings_dict = {
             "End-to-End Success - MCD MCO Policy Added":"Success",
             "Unspecified Technical Failure - ":"Exception",
             "BE01-An Attending Physician is required. - BE01-An Attending Physician is required.":"Exception",
+            """BE01-The below error occurred at Validation For Coordination of benefits
+System.IndexOutOfRangeException: Index was outside the bounds of the array.
+   at lambda_method(Closure , ActivityContext )
+   at Microsoft.VisualBasic.Activities.VisualBasicValue`1.Execute(CodeActivityContext context)
+   at System.Activities.Runtime.ActivityExecutor.ExecuteInResolutionContext[T](ActivityInstance parentInstance, Activity`1 expressionActivity)
+   at System.Activities.InArgument`1.TryPopulateValue(LocationEnvironment targetEnvironment, ActivityInstance activityInstance, ActivityExecutor executor)
+   at System.Activities.ActivityInstance.InternalTryPopulateArgumentValueOrScheduleExpression(RuntimeArgument argument, Int32 nextArgumentIndex, ActivityExecutor executor, IDictionary`2 argumentValueOverrides, Location resultLocation, Boolean isDynamicUpdate)
+   at System.Activities.ActivityInstance.ResolveArguments(ActivityExecutor executor, IDictionary`2 argumentValueOverrides, Location resultLocation, Int32 startIndex)
+   at System.Activities.Runtime.ActivityExecutor.ExecuteActivityWorkItem.ExecuteBody(ActivityExecutor executor, BookmarkManager bookmarkManager, Location resultLocation) - BE01-The below error occurred at Validation For Coordination of benefits
+System.IndexOutOfRangeException: Index was outside the bounds of the array.
+   at lambda_method(Closure , ActivityContext )
+   at Microsoft.VisualBasic.Activities.VisualBasicValue`1.Execute(CodeActivityContext context)
+   at System.Activities.Runtime.ActivityExecutor.ExecuteInResolutionContext[T](ActivityInstance parentInstance, Activity`1 expressionActivity)
+   at System.Activities.InArgument`1.TryPopulateValue(LocationEnvironment targetEnvironment, ActivityInstance activityInstance, ActivityExecutor executor)
+   at System.Activities.ActivityInstance.InternalTryPopulateArgumentValueOrScheduleExpression(RuntimeArgument argument, Int32 nextArgumentIndex, ActivityExecutor executor, IDictionary`2 argumentValueOverrides, Location resultLocation, Boolean isDynamicUpdate)
+   at System.Activities.ActivityInstance.ResolveArguments(ActivityExecutor executor, IDictionary`2 argumentValueOverrides, Location resultLocation, Int32 startIndex)
+   at System.Activities.Runtime.ActivityExecutor.ExecuteActivityWorkItem.ExecuteBody(ActivityExecutor executor, BookmarkManager bookmarkManager, Location resultLocation)""":"Exception",
         },
         "scenario_crosswalk": {
             "C00-Completed - C00-Completed":"End-to-end Success; MCD MCO Added",
@@ -399,6 +416,23 @@ mappings_dict = {
             "End-to-End Success - MCD MCO Policy Added":"Successful transaction (end-to-end)",
             "Unspecified Technical Failure - ":"When the bot comes to a halt due to an unhandled exception",
             "BE01-An Attending Physician is required. - BE01-An Attending Physician is required.":"Pop Up - Attending Physician",
+            """BE01-The below error occurred at Validation For Coordination of benefits
+System.IndexOutOfRangeException: Index was outside the bounds of the array.
+   at lambda_method(Closure , ActivityContext )
+   at Microsoft.VisualBasic.Activities.VisualBasicValue`1.Execute(CodeActivityContext context)
+   at System.Activities.Runtime.ActivityExecutor.ExecuteInResolutionContext[T](ActivityInstance parentInstance, Activity`1 expressionActivity)
+   at System.Activities.InArgument`1.TryPopulateValue(LocationEnvironment targetEnvironment, ActivityInstance activityInstance, ActivityExecutor executor)
+   at System.Activities.ActivityInstance.InternalTryPopulateArgumentValueOrScheduleExpression(RuntimeArgument argument, Int32 nextArgumentIndex, ActivityExecutor executor, IDictionary`2 argumentValueOverrides, Location resultLocation, Boolean isDynamicUpdate)
+   at System.Activities.ActivityInstance.ResolveArguments(ActivityExecutor executor, IDictionary`2 argumentValueOverrides, Location resultLocation, Int32 startIndex)
+   at System.Activities.Runtime.ActivityExecutor.ExecuteActivityWorkItem.ExecuteBody(ActivityExecutor executor, BookmarkManager bookmarkManager, Location resultLocation) - BE01-The below error occurred at Validation For Coordination of benefits
+System.IndexOutOfRangeException: Index was outside the bounds of the array.
+   at lambda_method(Closure , ActivityContext )
+   at Microsoft.VisualBasic.Activities.VisualBasicValue`1.Execute(CodeActivityContext context)
+   at System.Activities.Runtime.ActivityExecutor.ExecuteInResolutionContext[T](ActivityInstance parentInstance, Activity`1 expressionActivity)
+   at System.Activities.InArgument`1.TryPopulateValue(LocationEnvironment targetEnvironment, ActivityInstance activityInstance, ActivityExecutor executor)
+   at System.Activities.ActivityInstance.InternalTryPopulateArgumentValueOrScheduleExpression(RuntimeArgument argument, Int32 nextArgumentIndex, ActivityExecutor executor, IDictionary`2 argumentValueOverrides, Location resultLocation, Boolean isDynamicUpdate)
+   at System.Activities.ActivityInstance.ResolveArguments(ActivityExecutor executor, IDictionary`2 argumentValueOverrides, Location resultLocation, Int32 startIndex)
+   at System.Activities.Runtime.ActivityExecutor.ExecuteActivityWorkItem.ExecuteBody(ActivityExecutor executor, BookmarkManager bookmarkManager, Location resultLocation)""":"Unspecified Technical Error",
         },
         "column_crosswalk": {
             "MRN": "Enc Number",
@@ -473,6 +507,7 @@ mappings_dict = {
             "Crosswalk Discrepancy - Non-HDX Payer":"Exception",
             "Known Pop Up - Policy Number Format":"Exception",
             "Unspecified Technical Failure - ":"Exception",
+            "BE01-An Attending Physician is required. - BE01-An Attending Physician is required.":"Exception",
         },
         "scenario_crosswalk": {
             "C00 - Plan Code not available in given Master Sheet - C00 - Plan Code not available in given Master Sheet":"Plan Code not in Master Crosswalk",
@@ -520,6 +555,7 @@ mappings_dict = {
             "Crosswalk Discrepancy - Non-HDX Payer":"Bot worked NON-HDX crosswalk values",
             "Known Pop Up - Policy Number Format":"Bot encounters a policy number format mismatch pop up.",
             "Unspecified Technical Failure - ":"Bot comes to a halt due to an unhandled exception",
+            "BE01-An Attending Physician is required. - BE01-An Attending Physician is required.":"Pop Up - Attending Phys Required",
         },
         "column_crosswalk": {
             "MRN": "Enc Number",
@@ -567,6 +603,9 @@ mappings_dict = {
             "Specified Process Failure - Encounter Search Process":"Exception",
             "Known Pop Up - Special Characters found":"Exception",
             "End-to-End Success - Medicare Unallocated":"Success",
+            "BE01-Revise Encounter Details Option Not Found - Revise Encounter Details Option Not Found": "Exception",
+            "BE01-Pop-up error states a patient insurance policy needs to be allocated to this encounter - Pop-up error states a patient insurance policy needs to be allocated to this encounter":"Exception",
+            "Unhandled Exception - Finish Revised Encounter Popup not found":"Exception"
         },
         "scenario_crosswalk": {
             "C00-Unallocated Polices - ":"End-to-end Success; MCR Part B unallocated",
@@ -587,6 +626,9 @@ mappings_dict = {
             "Specified Process Failure - Encounter Search Process":"Bot fails to perform the encounter search step due to technical issues",
             "Known Pop Up - Special Characters found":"Bot encounters special characters pop up",
             "End-to-End Success - Medicare Unallocated":"Medicare Part B Unallocated",
+            "BE01-Revise Encounter Details Option Not Found - Revise Encounter Details Option Not Found": "Order Policies option disabled. No secondary policy allocated",
+            "BE01-Pop-up error states a patient insurance policy needs to be allocated to this encounter - Pop-up error states a patient insurance policy needs to be allocated to this encounter":"Pop Up - No Policies Allocated",
+            "Unhandled Exception - Finish Revised Encounter Popup not found":"Finish Revised Encounter window did not display"
         },
         "column_crosswalk": {
             "MRN": "Enc Number",
@@ -635,6 +677,10 @@ mappings_dict = {
             "Unspecified Technical Failure - ":"Exception",
             "C00-Health plans reordered - C00-Health plans reordered":"Success",
             "BE01-An Attending Physician is required. - BE01-An Attending Physician is required.":"Exception",
+            "BE01-Order policies for an encounter option not found/disabled. - BE01-Order policies for an encounter option not found/disabled.": "Exception",
+            "BE01-Known Pop Up - Attending Phys Req":"Exception",
+            "BE01-Unable to Click Hyperlink - Order Policies Disabled":"Exceptions",
+            "BE01-Known Pop Up - Special Characters found":"Exception",
         },
         "scenario_crosswalk": {
             "C00-Health plans reordered - ":"End-to-end Success; Plans reordered",
@@ -657,6 +703,10 @@ mappings_dict = {
             "Unspecified Technical Failure - ":"Bot comes to a halt due to an unhandled exception",
             "C00-Health plans reordered - C00-Health plans reordered":"End-to-end Success; Plans reordered",
             "BE01-An Attending Physician is required. - BE01-An Attending Physician is required.":"Pop Up - Attending Physician",
+            "BE01-Order policies for an encounter option not found/disabled. - BE01-Order policies for an encounter option not found/disabled.": "Order Policies option disabled; No Secondary payer allocated",
+            "BE01-Known Pop Up - Attending Phys Req":"Pop Up - Attending Physician",
+            "BE01-Unable to Click Hyperlink - Order Policies Disabled":"Order Policies hyperlink disabled",
+            "BE01-Known Pop Up - Special Characters found":"Pop Up - Special Characters Found"
         },
         "column_crosswalk": {
             "INVNUM": "Enc Number",
@@ -773,6 +823,7 @@ mappings_dict = {
             "End-to-End Success - Address Updated in Soarian":"Success",
             "C00:Address Already Exist - Address Already Exist": "Success",
             "BE01:Invalid Zipcode - Invalid Zipcode": "Exception",
+            "BE01:Patient Account not found in search - Patient Account not found in search":"Exception",
         },
         "scenario_crosswalk": {
             "C00:New address Added successfully - ": "End-to-end Success; Address Added",
@@ -795,6 +846,7 @@ mappings_dict = {
             "End-to-End Success - Address Updated in Soarian":"Bot Successfully updates the Address",
             "C00:Address Already Exist - Address Already Exist": "New Address already in Soarian for Patient",
             "BE01:Invalid Zipcode - Invalid Zipcode": "System does not auto-populate the city, country and county values after entering the zip code",
+            "BE01:Patient Account not found in search - Patient Account not found in search":"No matching values found in the system"
         },
         "column_crosswalk": {
             "PTFULLNAME": "Patient Name",
@@ -844,6 +896,7 @@ mappings_dict = {
             "Account Not Found - No Patient Found":"Exception",
             "End-to-End Success - Itemized Statement Printed":"Success",
             "Account Not Found - Not Group 3 Invoice":"Exception",
+            "Itemized Statement Printed - Itemized Statement Printed":"Success",
         },
         "scenario_crosswalk": {
             "Itemized Statement Printed - ":"End-to-end Success; Itemized Statement Printed",
@@ -864,6 +917,7 @@ mappings_dict = {
             "Account Not Found - No Patient Found":"Patient is not found for the given invoice/accout number",
             "End-to-End Success - Itemized Statement Printed":"Successful transaction (end-to-end)",
             "Account Not Found - Not Group 3 Invoice":"Invoice not found in the PCS Selector Filtering Form due to non-group 3 invoice",
+            "Itemized Statement Printed - Itemized Statement Printed":"End-to-end Success; Itemized Statement Printed",
         },
         "column_crosswalk": {
             "POLICYID": "Invoice Number",
