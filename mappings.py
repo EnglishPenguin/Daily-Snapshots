@@ -379,6 +379,8 @@ System.IndexOutOfRangeException: Index was outside the bounds of the array.
    at System.Activities.ActivityInstance.InternalTryPopulateArgumentValueOrScheduleExpression(RuntimeArgument argument, Int32 nextArgumentIndex, ActivityExecutor executor, IDictionary`2 argumentValueOverrides, Location resultLocation, Boolean isDynamicUpdate)
    at System.Activities.ActivityInstance.ResolveArguments(ActivityExecutor executor, IDictionary`2 argumentValueOverrides, Location resultLocation, Int32 startIndex)
    at System.Activities.Runtime.ActivityExecutor.ExecuteActivityWorkItem.ExecuteBody(ActivityExecutor executor, BookmarkManager bookmarkManager, Location resultLocation)""":"Exception",
+        "BE01-The Policy Number Does Not Match - BE01-The Policy Number Does Not Match":"Exception",
+        
         },
         "scenario_crosswalk": {
             "C00-Completed - C00-Completed":"End-to-end Success; MCD MCO Added",
@@ -433,6 +435,8 @@ System.IndexOutOfRangeException: Index was outside the bounds of the array.
    at System.Activities.ActivityInstance.InternalTryPopulateArgumentValueOrScheduleExpression(RuntimeArgument argument, Int32 nextArgumentIndex, ActivityExecutor executor, IDictionary`2 argumentValueOverrides, Location resultLocation, Boolean isDynamicUpdate)
    at System.Activities.ActivityInstance.ResolveArguments(ActivityExecutor executor, IDictionary`2 argumentValueOverrides, Location resultLocation, Int32 startIndex)
    at System.Activities.Runtime.ActivityExecutor.ExecuteActivityWorkItem.ExecuteBody(ActivityExecutor executor, BookmarkManager bookmarkManager, Location resultLocation)""":"Unspecified Technical Error",
+        "BE01-The Policy Number Does Not Match - BE01-The Policy Number Does Not Match":"Pop Up - Policy does not match expected format",
+        
         },
         "column_crosswalk": {
             "MRN": "Enc Number",

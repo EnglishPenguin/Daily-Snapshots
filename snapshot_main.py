@@ -16,7 +16,7 @@ if __name__ == '__main__':
         # "LIJ IS Printing"
         # "NCOA"
         # "BD IS Printing"
-    # for use_case in [""]:
+    # for use_case in ["MCD MCO Available"]:
         try:
             Snapshot(use_case)
         except FileNotFoundError:
