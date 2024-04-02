@@ -60,8 +60,10 @@ mappings_dict = {
             'RD + Reason', 
             'Business Status'
         ],
+        "BotName":"",
     },
     "CSE1236": {
+        "BotName":"",
         "file_path": "M:/CPP-Data/Sutherland RPA/Coding/CSE1236",
         "columns": [
             "PTFULLNAME",
@@ -146,6 +148,7 @@ mappings_dict = {
         ],
     },
     "TES1249": {
+        "BotName":"TES1249",
         "file_path": "M:/CPP-Data/Sutherland RPA/Coding/TES1249",
         "columns": [
             "PTFULLNAME",
@@ -240,6 +243,7 @@ mappings_dict = {
         ],
     },
     "TES6146": {
+        "BotName":"TES6146",
         "file_path": "M:/CPP-Data/Sutherland RPA/Coding/TES6146",
         "columns": [
             "PTFULLNAME",
@@ -316,6 +320,7 @@ mappings_dict = {
         ],
     },
     "MCD MCO Available": {
+        "BotName":"MCD MCO Available",
         "file_path": "M:/FPP-CPP/Revenue Cycle Operations Training/Projects/RPA Project/MCD MCO Available",
         "columns": [
             "MRN",
@@ -380,6 +385,8 @@ System.IndexOutOfRangeException: Index was outside the bounds of the array.
    at System.Activities.ActivityInstance.ResolveArguments(ActivityExecutor executor, IDictionary`2 argumentValueOverrides, Location resultLocation, Int32 startIndex)
    at System.Activities.Runtime.ActivityExecutor.ExecuteActivityWorkItem.ExecuteBody(ActivityExecutor executor, BookmarkManager bookmarkManager, Location resultLocation)""":"Exception",
         "BE01-The Policy Number Does Not Match - BE01-The Policy Number Does Not Match":"Exception",
+        "Coverage Tab is Empty - Coverage Tab is Empty":"Exception",
+        "The Policy Number Does Not Match - ":"Exception",
         
         },
         "scenario_crosswalk": {
@@ -412,7 +419,7 @@ System.IndexOutOfRangeException: Index was outside the bounds of the array.
             "Specified Process Failure - Select Patient":"Bot fails to select the account due to technical issues",
             "New/Unexpected Screen Element - Soarian":"Bot encounters a new/unexpected screen element  towards the end of the workflow",
             "Specified Process Failure - Select Work Queue":"Bot unable to select the eCN Work Queue",
-            "Account Not Found - No Encounter Found":"Cncounter search does not populate any results in Soarian",
+            "Account Not Found - No Encounter Found":"Encounter search does not populate any results in Soarian",
             "Known Pop Up - Special Characters found":"Special Characters Pop Up",
             "Crosswalk Discrepancy - Non-HDX Payer":"When the bot works NON-HDX crosswalk values",
             "End-to-End Success - MCD MCO Policy Added":"Successful transaction (end-to-end)",
@@ -436,7 +443,9 @@ System.IndexOutOfRangeException: Index was outside the bounds of the array.
    at System.Activities.ActivityInstance.ResolveArguments(ActivityExecutor executor, IDictionary`2 argumentValueOverrides, Location resultLocation, Int32 startIndex)
    at System.Activities.Runtime.ActivityExecutor.ExecuteActivityWorkItem.ExecuteBody(ActivityExecutor executor, BookmarkManager bookmarkManager, Location resultLocation)""":"Unspecified Technical Error",
         "BE01-The Policy Number Does Not Match - BE01-The Policy Number Does Not Match":"Pop Up - Policy does not match expected format",
-        
+        "Coverage Tab is Empty - Coverage Tab is Empty":"Data not found in eCareNext",
+        "The Policy Number Does Not Match - ":"Pop Up - Policy does not match expected format",
+
         },
         "column_crosswalk": {
             "MRN": "Enc Number",
@@ -454,6 +463,7 @@ System.IndexOutOfRangeException: Index was outside the bounds of the array.
         ],
     },
     "MCR Advantage": {
+        "BotName":"MCR Advantage",
         "file_path": "M:/FPP-CPP/Revenue Cycle Operations Training/Projects/RPA Project/MCR Advantage",
         "columns": [
             "MRN",
@@ -512,6 +522,14 @@ System.IndexOutOfRangeException: Index was outside the bounds of the array.
             "Known Pop Up - Policy Number Format":"Exception",
             "Unspecified Technical Failure - ":"Exception",
             "BE01-An Attending Physician is required. - BE01-An Attending Physician is required.":"Exception",
+            "New/Unexpected Screen Element - Encounter Search Process":"Exception",
+            "An Attending Physician is required. - ":"Exception",
+            "The Policy Number Does Not Match - ":"Exception",
+            "New/Unexpected Screen Element - ":"Exception",
+            "Unexpected screen occured  - ":"Exception",
+            "Mandatory fields are missing in the received input - Encounter Search Process":"Exception",
+
+
         },
         "scenario_crosswalk": {
             "C00 - Plan Code not available in given Master Sheet - C00 - Plan Code not available in given Master Sheet":"Plan Code not in Master Crosswalk",
@@ -560,6 +578,13 @@ System.IndexOutOfRangeException: Index was outside the bounds of the array.
             "Known Pop Up - Policy Number Format":"Bot encounters a policy number format mismatch pop up.",
             "Unspecified Technical Failure - ":"Bot comes to a halt due to an unhandled exception",
             "BE01-An Attending Physician is required. - BE01-An Attending Physician is required.":"Pop Up - Attending Phys Required",
+            "New/Unexpected Screen Element - Encounter Search Process":"New/Unexpected Screen Element during the Encounter Search process",
+            "An Attending Physician is required. - ":"Bot received an attending physician required pop up",
+            "The Policy Number Does Not Match - ":"Bot received a pop up stating the policy number does not match expected format",
+            "New/Unexpected Screen Element - ":"New/Unexpected Screen Element",
+            "Unexpected screen occured  - ":"New/Unexpected Screen Element",
+            "Mandatory fields are missing in the received input - Encounter Search Process":"Unspecified Technical Error",
+
         },
         "column_crosswalk": {
             "MRN": "Enc Number",
@@ -578,6 +603,7 @@ System.IndexOutOfRangeException: Index was outside the bounds of the array.
         ],
     },
     "MCR PartB Inactive": {
+        "BotName":"MCR Part B Inactive",
         "file_path": "M:/FPP-CPP/Revenue Cycle Operations Training/Projects/RPA Project/MCR PartB Inactive",
         "columns": [
             "MRN",
@@ -650,6 +676,7 @@ System.IndexOutOfRangeException: Index was outside the bounds of the array.
         ],
     },
     "Medicare Not Primary": {
+        "BotName":"Medicare Not Primary",
         "file_path": "M:/FPP-CPP/Revenue Cycle Operations Training/Projects/RPA Project/Medicare Not Primary",
         "columns": [
             "INVNUM",
@@ -728,6 +755,7 @@ System.IndexOutOfRangeException: Index was outside the bounds of the array.
         ],
     },
     "LIJ IS Printing": {
+        "BotName":"Printing Itemized Statement",
         "file_path": "M:/FPPShare/FPP-Production/Itemized Statement HCX BOT",
         "columns": [
             "POLICYID",
@@ -795,6 +823,7 @@ System.IndexOutOfRangeException: Index was outside the bounds of the array.
         ],
     },
     "NCOA": {
+        "BotName":"Patient Address Update via NCOA",
         "file_path": "M:/FPPShare/FPP-Production/NCOA BOT",
         "columns": [
             "PTFULLNAME",
@@ -860,8 +889,8 @@ System.IndexOutOfRangeException: Index was outside the bounds of the array.
             "Reason": "Reason",
         },
         "carbon_copy": 'rmuncipinto@northwell.edu; nmitrako@northwell.edu',
-        "name_format": "{file_path}/{year_str}{month_str}{day_str}*OUTBOUND.xlsx",
-        "ind_name_format": "{file_path}/{year_str}{month_str}{day_str}.NSH.NCOA{index_num}_OUTBOUND.xlsx",
+        "name_format": "{file_path}/{year_str}{month_str}{day_str}*OUTBOUND*.xlsx",
+        "ind_name_format": "{file_path}/{year_str}{month_str}{day_str}.NSH.NCOA{index_num}_OUTBOUND*.xlsx",
         "drop_columns": [
             'Retrieval Status', 
             'Retrieval Description', 
@@ -871,6 +900,7 @@ System.IndexOutOfRangeException: Index was outside the bounds of the array.
         ],
     },
     "BD IS Printing": {
+        "BotName":"Bad Debt - Printing Itemized Statement",
         "file_path": "M:/CPP-Data/Sutherland RPA/BD IS Printing",
         "columns": [
             "POLICYID",
@@ -940,6 +970,7 @@ System.IndexOutOfRangeException: Index was outside the bounds of the array.
         ],
     },
     # "Coding MR Pull": {
+    #     "BotName":"MRAuditPull",
     #     "file_path": "M:/CPP-Data/Sutherland RPA/Coding/MR AP",
     #     "columns": [
     #         "UMGMRN",
