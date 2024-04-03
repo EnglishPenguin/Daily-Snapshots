@@ -8,42 +8,29 @@ if __name__ == '__main__':
     dt_func = DateFunctions()
     date = dt_func.ask_if_correct_date(today)
     try:
-        outbound_df = MainSpreadsheet(init_date=date)
+        outbound_df = MainSpreadsheet()
+        outbound_df.run(date)
     except FileNotFoundError:
         logger.critical(f"Main outbound spreadsheet not found in M:\CPP-Data\Sutherland RPA\Combined Outputs")
     else:
         for use_case in mappings_dict:
-            if use_case == "NCOA":
-                continue
-
-        # Use the below line to run Ad Hoc daily snapshot
-            # "CSE1235"
-            # "CSE1236"
-            # "TES1249"
-            # "TES6146"
-            # "MCD MCO Available"
-            # "MCR Advantage"
-            # "MCR PartB Inactive"
-            # "Medicare Not Primary"
-            # "LIJ IS Printing"
-            # "NCOA"
-            # "BD IS Printing"
-
-            else:
-                snapshot = Snapshot(use_case, outbound_df.main_df, date=date)
-                try:
-                    snapshot.parse_spreadsheet()
-                    if len(snapshot.use_case_df) == 0:
-                        logger.critical(f"No rows in spreadsheet for {use_case}")
-                        continue
-                    snapshot.apply_business_rules()
-                    snapshot.get_exceptions()
-                except AttributeError:
-                    logger.critical(f"{use_case} encountered an AttributeError error")
+            snapshot = Snapshot(use_case, outbound_df.main_df, outbound_df.file_date)
+            try:
+                snapshot.parse_spreadsheet()
+                if len(snapshot.use_case_df) == 0:
+                    logger.critical(f"No rows in spreadsheet for {use_case}")
                     continue
-                else:
-                    snapshot.calc_results()
-                    snapshot.write_email_body()
-                    snapshot.compose_and_send()
+                snapshot.apply_business_rules()
+                snapshot.get_exceptions()
+            except AttributeError as e:
+                logger.exception(e)
+                continue
+            except IndexError as e:
+                logger.critical(f"No rows in spreadsheet for {use_case}")
+                continue
+            else:
+                snapshot.calc_results()
+                snapshot.write_email_body()
+                snapshot.compose_and_send()
             
         

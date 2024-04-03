@@ -11,7 +11,8 @@ from tkinter import simpledialog as sd
 from tkinter import messagebox as mb
 
 class DateFunctions:
-    def __init__(self) -> None:
+    def __init__(self, *args, **kwargs) -> None:
+        self.date = None
         pass
 
     # Take input date, get dow, change date if it is a weekend, get date in string format
@@ -26,6 +27,7 @@ class DateFunctions:
         logger.debug(f"Current date weekday is {self.file_date_wd}")
         self.file_date = self.check_date(dow= self.file_date_wd, date= self.file_date)
         self.get_file_date_str(date= self.file_date)
+        return self.file_date
 
     # get the current date in string format
     def get_file_date_str(self, date):
@@ -60,7 +62,7 @@ class DateFunctions:
     def parse_date(self, date_str):
         return datetime.strptime(date_str, "%m%d%Y")
     
-    # 
+    # ask the user if the date is correct. If not, ask for a new date
     def ask_if_correct_date(self, today):
         answer = mb.askyesno(f"Check Date", f"Do you want to run for the file date of {today}?")
         if not answer:
@@ -84,20 +86,26 @@ class DateFunctions:
     
 
 class MainSpreadsheet(DateFunctions):
-    def __init__(self, init_date= dt.today()) -> None:
+    def __init__(self) -> None:
         super().__init__()
+        pass
+
+    # run the methods that will read the main spreadsheet
+    def run(self, init_date):
         # self.combined_op_file_path = "M:/CPP-Data/Sutherland RPA/Northwell Process Automation ETM Files/GOA/Inputs/Outbound_"
         self.combined_op_file_path = "M:/CPP-Data/Sutherland RPA/Combined Outputs/Outbound_"
-        self.get_file_date(initial_date= init_date)
+        self.file_date = self.get_file_date(initial_date= init_date)
         self.get_file_path()
         self.main_df = self.read_main_spreadsheet(file=self.file_path)
     
+    # get the file path for the main spreadsheet
     def get_file_path(self):
         logger.info("Getting the file path")
         self.file_path = self.combined_op_file_path + self.file_date_str + ".xlsx"
     
+    # wait for the file to be available
     @wait_for_file()
-    def read_main_spreadsheet(self, file):
+    def read_main_spreadsheet(self, file): # read the main spreadsheet
         logger.info("Reading the main spreadsheet")
         main_df = pd.read_excel(
             file, 
@@ -108,8 +116,8 @@ class MainSpreadsheet(DateFunctions):
         return main_df
 
 
-class Snapshot(DateFunctions):
-    def __init__(self, use_case, main_df, date= dt.today()) -> None:
+class Snapshot(MainSpreadsheet):
+    def __init__(self, use_case, main_df, file_date) -> None:
         super().__init__()
         self.use_case = use_case
         self.file_path = mappings.mappings_dict[f"{self.use_case}"]["file_path"]
@@ -122,10 +130,36 @@ class Snapshot(DateFunctions):
         self.drop_columns = mappings.mappings_dict[f"{self.use_case}"]["drop_columns"]
         self.botname = mappings.mappings_dict[f"{self.use_case}"]["BotName"]
         self.main_df = main_df
-        self.get_file_date(initial_date= date)
-        
-        
+        self.file_date = file_date   
+    
+    # run the methods that will parse the spreadsheet
+    def parse_spreadsheet(self):
+        logger.info(f"Parsing the spreadsheet for {self.use_case}")
+        self.use_case_df = self.main_df[self.main_df["BotName"] == self.botname]
+        if self.use_case == "NCOA":
+            self.get_ncoa_date() # Will reset self.file_date + dependents; NCOA must be last in mappings_dict
+        self.export_to_excel()
+        self.use_case_df = pd.DataFrame(self.use_case_df, columns=self.columns)
+        self.use_case_df.rename(columns=self.columns_crosswalk, inplace=True)
+        self.use_case_df['RD + Reason'] = self.use_case_df['Retrieval Description']+ " - " + self.use_case_df['Reason']
 
+    # get the date for the NCOA use case
+    def get_ncoa_date(self):
+        # set new file date by looking at column 'BOTRequestDate' in self.use_case_df
+        self.file_date = self.use_case_df['BOTRequestDate'].iloc[0] # get the date from the first row
+        # take value in self.file_date input template: 3/26/2024 7:25:15 AM and turn it into a datetime object
+        self.file_date = datetime.strptime(self.file_date, "%m/%d/%Y %I:%M:%S %p")
+        logger.debug(f"date - {self.file_date} type - {type(self.file_date)}")
+        self.get_file_date_str(date= self.file_date)
+
+    # export the dataframe to an excel file
+    def export_to_excel(self):
+        logger.info(f"Exporting to Excel for {self.use_case}")
+        self.get_file_date_str(self.file_date)
+        self.get_name_format()
+        self.use_case_df.to_excel(self.name_format, index=False)
+
+    # get the name format for the file
     def get_name_format(self):
         logger.info(f"Getting the name format for {self.use_case}")
         self.name_format = self.name_format_str.format(
@@ -134,26 +168,16 @@ class Snapshot(DateFunctions):
             day_str= self.file_date_d_str, 
             year_str= self.file_date_y_str, 
         )
-    
-    def parse_spreadsheet(self):
-        logger.info(f"Parsing the spreadsheet for {self.use_case}")
-        self.use_case_df = self.main_df[self.main_df["BotName"] == self.botname]
-        self.export_to_excel()
-        self.use_case_df = pd.DataFrame(self.use_case_df, columns=self.columns)
-        self.use_case_df.rename(columns=self.columns_crosswalk, inplace=True)
-        self.use_case_df['RD + Reason'] = self.use_case_df['Retrieval Description']+ " - " + self.use_case_df['Reason']
 
-    def export_to_excel(self):
-        logger.info(f"Exporting to Excel for {self.use_case}")
-        self.get_name_format()
-        self.use_case_df.to_excel(self.name_format, index=False)
-
+    # get the business status for each row
     def get_business_status(self, row):
         return self.status_crosswalk.get(row['RD + Reason'], 'Exception')
     
+    # get the business scenario for each row
     def get_business_scenario(self, row):
         return self.scenario_crosswalk.get(row['RD + Reason'], 'Unmapped Exception Scenario')
     
+    # apply the business rules to the dataframe
     def apply_business_rules(self):
         logger.info(f"Applying business rules for {self.use_case}")
         logger.info(f"Getting business statuses for {self.use_case}")
@@ -167,6 +191,7 @@ class Snapshot(DateFunctions):
             axis=1
             )
     
+    # get the exceptions for the use case
     def get_exceptions(self):
         logger.info(f"Getting exceptions for {self.use_case}")
         self.exceptions_df = pd.DataFrame(self.use_case_df)
@@ -181,6 +206,7 @@ class Snapshot(DateFunctions):
             table_id="exceptions_table"
             )
 
+    # calculate the results for the use case
     def calc_results(self):
         logger.info(f"Calculating results for {self.use_case}")
         self.total_rows = len(self.use_case_df)
@@ -191,6 +217,7 @@ class Snapshot(DateFunctions):
 
         self.get_exceptions()
     
+    # write the email body for the use case
     def write_email_body(self):
         logger.info(f"Writing email body for {self.use_case}")
         self.email_body = f"""
@@ -209,6 +236,7 @@ class Snapshot(DateFunctions):
         {self.html_table}
         """
 
+    # compose and send the email
     def compose_and_send(self):
         self.outlook = win32.Dispatch('Outlook.Application')
         self.mail = self.outlook.CreateItem(0)
