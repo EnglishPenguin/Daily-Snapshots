@@ -60,7 +60,7 @@ mappings_dict = {
             'RD + Reason', 
             'Business Status'
         ],
-        "BotName":"",
+        "BotName":"Claim Scrubber Edit 1235",
     },
     "CSE1236": {
         "BotName":"",
@@ -146,6 +146,7 @@ mappings_dict = {
             'RD + Reason', 
             'Business Status'
         ],
+        "BotName":"Claim Scrubber Edit 1236",
     },
     "TES1249": {
         "BotName":"TES1249",
@@ -255,6 +256,8 @@ mappings_dict = {
             "RD + Reason",
             "Business Status",
             "Business Scenario",
+            "PROVFULLNAME",
+            "Location",
         ],
         "status_crosswalk": {
             "Specified Process Failure - Email Not Sent to Provider":"Exception",
@@ -277,6 +280,7 @@ mappings_dict = {
             "Validation Error - Encounter Number":"Exception",
             "Account Not Found - No Patient Found":"Exception",
             "Unspecified Technical Failure - ":"Exception",
+            "Review Required by Northwell - PRR – DX Pointers": "Exception",
         },
         "scenario_crosswalk": {
             "Specified Process Failure - Email Not Sent to Provider":"Technical Error prevented email from being sent",
@@ -299,6 +303,7 @@ mappings_dict = {
             "Validation Error - Encounter Number":"Unable to validate encounter number",
             "Account Not Found - No Patient Found":"No search results for patient; Likely worked by another user",
             "Unspecified Technical Failure - ":"Unspecified Technical Error",
+            "Review Required by Northwell - PRR – DX Pointers": "Unable to update DX Pointers. Additional review required",
         },
         "column_crosswalk": {
             "PTFULLNAME": "Patient Name",
@@ -307,6 +312,8 @@ mappings_dict = {
             "RetrievalStatus": "Retrieval Status",
             "RetrievalDescription": "Retrieval Description",
             "Reason": "Reason",
+            "PROVFULLNAME": "Provider Name",
+            "Location": "Division",
         },
         "carbon_copy": 'klawrence3@northwell.edu; ovicuna@northwell.edu; jcarney1@northwell.edu; gbunce@northwell.edu; mpuma@northwell.edu',
         "name_format": "{file_path}/GECB_TES6146_Outbound_{month_str}{day_str}{year_str}.xlsx",
@@ -882,7 +889,7 @@ System.IndexOutOfRangeException: Index was outside the bounds of the array.
             "RetrievalDescription": "Retrieval Description",
             "Reason": "Reason",
         },
-        "carbon_copy": 'avais@northwell.edu; aharrison7@northwell.edu; bcerami@northwell.edu; CSchumacher1@northwell.edu; sflanagan6@northwell.edu; SFerebee@northwell.edu; dmorera@northwell.edu; cchandler1@northwell.edu',
+        "carbon_copy": 'avais@northwell.edu; aharrison7@northwell.edu; bcerami@northwell.edu; CSchumacher1@northwell.edu; SFerebee@northwell.edu; ssirico@northwell.edu; cchandler1@northwell.edu; dcurtin1@northwell.edu',
         "name_format": "{file_path}/{year_str}/{year_str}{month_str}{day_str}_PAANS_BADDEBT_IB_BOT_OUTBOUND.xlsx",
         "drop_columns": [
             'Retrieval Status', 

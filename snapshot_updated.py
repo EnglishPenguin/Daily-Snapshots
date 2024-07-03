@@ -11,7 +11,7 @@ from tkinter import simpledialog as sd
 from tkinter import messagebox as mb
 
 class DateFunctions:
-    def __init__(self, *args, **kwargs) -> None:
+    def __init__(self) -> None:
         self.date = None
         pass
 
@@ -64,7 +64,7 @@ class DateFunctions:
     
     # ask the user if the date is correct. If not, ask for a new date
     def ask_if_correct_date(self, today):
-        answer = mb.askyesno(f"Check Date", f"Do you want to run for the file date of {today}?")
+        answer = mb.askyesno(f"Check Date", f"Do you want to run for the calendar date of {today}?")
         if not answer:
                 day = sd.askinteger("Follow Up", "Please enter day of the month as number : ", minvalue=1, maxvalue=31)
                 logger.debug(f"{day} was entered")
@@ -243,5 +243,5 @@ class Snapshot(MainSpreadsheet):
         self.mail.Subject = f'{self.use_case} Daily Snapshot - {self.file_date_str_slash}'
         self.mail.HTMLBody = self.email_body
         self.mail.To = 'denglish2@northwell.edu'
-        # self.mail.CC = self.cc_emails
+        self.mail.CC = self.cc_emails
         self.mail.Send()
