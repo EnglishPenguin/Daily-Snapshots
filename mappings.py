@@ -50,7 +50,7 @@ mappings_dict = {
             "RetrievalDescription": "Retrieval Description",
             "Reason": "Reason",
         },
-        "carbon_copy": 'klawrence3@northwell.edu; ovicuna@northwell.edu; jcarney1@northwell.edu; gbunce@northwell.edu; mpuma@northwell.edu',
+        "carbon_copy": 'klawrence3@northwell.edu; ovicuna@northwell.edu; jcarney1@northwell.edu; gbunce@northwell.edu; mpuma@northwell.edu; csperoni@northwell.edu',
         "name_format": "{file_path}/GECB_CSE1235_Outbound_{month_str}{day_str}{year_str}.xlsx",
         "drop_columns": [
             'Patient Name', 
@@ -136,7 +136,7 @@ mappings_dict = {
             "RetrievalDescription": "Retrieval Description",
             "Reason": "Reason",
         },
-        "carbon_copy": 'klawrence3@northwell.edu; ovicuna@northwell.edu; jcarney1@northwell.edu; gbunce@northwell.edu; mpuma@northwell.edu',
+        "carbon_copy": 'klawrence3@northwell.edu; ovicuna@northwell.edu; jcarney1@northwell.edu; gbunce@northwell.edu; mpuma@northwell.edu; csperoni@northwell.edu',
         "name_format": "{file_path}/GECB_CSE1236_Outbound_{month_str}{day_str}{year_str}.xlsx",
         "drop_columns": [
             'Patient Name', 
@@ -232,7 +232,7 @@ mappings_dict = {
             "RetrievalDescription": "Retrieval Description",
             "Reason": "Reason",
         },
-        "carbon_copy": 'klawrence3@northwell.edu; ovicuna@northwell.edu; jcarney1@northwell.edu; gbunce@northwell.edu; mpuma@northwell.edu',
+        "carbon_copy": 'klawrence3@northwell.edu; ovicuna@northwell.edu; jcarney1@northwell.edu; gbunce@northwell.edu; mpuma@northwell.edu; csperoni@northwell.edu',
         "name_format": "{file_path}/GECB_TES1249_Outbound_{month_str}{day_str}{year_str}.xlsx",
         "drop_columns": [
             'Patient Name', 
@@ -315,7 +315,7 @@ mappings_dict = {
             "PROVFULLNAME": "Provider Name",
             "Location": "Division",
         },
-        "carbon_copy": 'klawrence3@northwell.edu; ovicuna@northwell.edu; jcarney1@northwell.edu; gbunce@northwell.edu; mpuma@northwell.edu',
+        "carbon_copy": 'klawrence3@northwell.edu; ovicuna@northwell.edu; jcarney1@northwell.edu; gbunce@northwell.edu; mpuma@northwell.edu; csperoni@northwell.edu',
         "name_format": "{file_path}/GECB_TES6146_Outbound_{month_str}{day_str}{year_str}.xlsx",
         "drop_columns": [
             'Patient Name', 
