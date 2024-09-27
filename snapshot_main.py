@@ -14,7 +14,7 @@ if __name__ == '__main__':
         logger.critical(f"Main outbound spreadsheet not found in M:\CPP-Data\Sutherland RPA\Combined Outputs")
     else:
         for use_case in mappings_dict:
-        # for use_case in ['CPE']:
+        # for use_case in ['BD IS Printing']:
             snapshot = Snapshot(use_case, outbound_df.main_df, outbound_df.file_date)
             try:
                 snapshot.parse_spreadsheet()

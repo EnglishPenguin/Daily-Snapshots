@@ -391,10 +391,17 @@ System.IndexOutOfRangeException: Index was outside the bounds of the array.
    at System.Activities.ActivityInstance.InternalTryPopulateArgumentValueOrScheduleExpression(RuntimeArgument argument, Int32 nextArgumentIndex, ActivityExecutor executor, IDictionary`2 argumentValueOverrides, Location resultLocation, Boolean isDynamicUpdate)
    at System.Activities.ActivityInstance.ResolveArguments(ActivityExecutor executor, IDictionary`2 argumentValueOverrides, Location resultLocation, Int32 startIndex)
    at System.Activities.Runtime.ActivityExecutor.ExecuteActivityWorkItem.ExecuteBody(ActivityExecutor executor, BookmarkManager bookmarkManager, Location resultLocation)""":"Exception",
-        "BE01-The Policy Number Does Not Match - BE01-The Policy Number Does Not Match":"Exception",
-        "Coverage Tab is Empty - Coverage Tab is Empty":"Exception",
-        "The Policy Number Does Not Match - ":"Exception",
-        
+            "BE01-The Policy Number Does Not Match - BE01-The Policy Number Does Not Match":"Exception",
+            "Coverage Tab is Empty - Coverage Tab is Empty":"Exception",
+            "The Policy Number Does Not Match - ":"Exception",
+            "New/Unexpected Screen Element - ":"Exception",
+            "No Payer Identified in Terminated - ":"Exception",
+            "New Popup identified - New Popup identified":"Exception",
+            "No Data Availible for this Encounter - No Data Availible for this Encounter":"Exception",
+            "The Policy Number Does Not Match - ":"Exception",
+            "Payer not identified - ":"Exception",
+
+
         },
         "scenario_crosswalk": {
             "C00-Completed - C00-Completed":"End-to-end Success; MCD MCO Added",
@@ -449,9 +456,15 @@ System.IndexOutOfRangeException: Index was outside the bounds of the array.
    at System.Activities.ActivityInstance.InternalTryPopulateArgumentValueOrScheduleExpression(RuntimeArgument argument, Int32 nextArgumentIndex, ActivityExecutor executor, IDictionary`2 argumentValueOverrides, Location resultLocation, Boolean isDynamicUpdate)
    at System.Activities.ActivityInstance.ResolveArguments(ActivityExecutor executor, IDictionary`2 argumentValueOverrides, Location resultLocation, Int32 startIndex)
    at System.Activities.Runtime.ActivityExecutor.ExecuteActivityWorkItem.ExecuteBody(ActivityExecutor executor, BookmarkManager bookmarkManager, Location resultLocation)""":"Unspecified Technical Error",
-        "BE01-The Policy Number Does Not Match - BE01-The Policy Number Does Not Match":"Pop Up - Policy does not match expected format",
-        "Coverage Tab is Empty - Coverage Tab is Empty":"Data not found in eCareNext",
-        "The Policy Number Does Not Match - ":"Pop Up - Policy does not match expected format",
+            "BE01-The Policy Number Does Not Match - BE01-The Policy Number Does Not Match":"Pop Up - Policy does not match expected format",
+            "Coverage Tab is Empty - Coverage Tab is Empty":"Data not found in eCareNext",
+            "The Policy Number Does Not Match - ":"Pop Up - Policy does not match expected format",
+            "New/Unexpected Screen Element - ":"New/Unexpected Screen in Soarian",
+            "No Payer Identified in Terminated - ":"Terminated Plan not found in well",
+            "New Popup identified - New Popup identified":"New/Unexpected Screen in Soarian",
+            "No Data Availible for this Encounter - No Data Availible for this Encounter":"Account not found in Soarian",
+            "The Policy Number Does Not Match - ":"Bot receives pop-up stating policy number format is incorrect",
+            "Payer not identified - ":"Terminated Plan not found in well",
 
         },
         "column_crosswalk": {
@@ -535,7 +548,12 @@ System.IndexOutOfRangeException: Index was outside the bounds of the array.
             "New/Unexpected Screen Element - ":"Exception",
             "Unexpected screen occured  - ":"Exception",
             "Mandatory fields are missing in the received input - Encounter Search Process":"Exception",
-
+            "New/Unexpected Screen Element - Missing Plan Code":"Exception",
+            "No Payer Identified in Terminated - ":"Exception",
+            "No Data Availible for this Encounter - No Data Availible for this Encounter":"Exception",
+            "End-to-End Success - MCD MCO Policy Added":"Success",
+            "End-to-End Success - No Data Availible for this Encounter":"Exception",
+            " - ":"Exception",
 
         },
         "scenario_crosswalk": {
@@ -591,6 +609,12 @@ System.IndexOutOfRangeException: Index was outside the bounds of the array.
             "New/Unexpected Screen Element - ":"New/Unexpected Screen Element",
             "Unexpected screen occured  - ":"New/Unexpected Screen Element",
             "Mandatory fields are missing in the received input - Encounter Search Process":"Unspecified Technical Error",
+            "New/Unexpected Screen Element - Missing Plan Code":"Plan Code not in Master Crosswalk",
+            "No Payer Identified in Terminated - ":"Terminated Plan not found in well",
+            "No Data Availible for this Encounter - No Data Availible for this Encounter":"Account not found in Soarian",
+            "End-to-End Success - MCD MCO Policy Added":"End-to-end Success; MCR Adv Added",
+            "End-to-End Success - No Data Availible for this Encounter":"Account not found in Soarian",
+            " - ":"Manually Excluded Volume",
 
         },
         "column_crosswalk": {
@@ -896,7 +920,7 @@ System.IndexOutOfRangeException: Index was outside the bounds of the array.
             "RetrievalDescription": "Retrieval Description",
             "Reason": "Reason",
         },
-        "carbon_copy": 'rmuncipinto@northwell.edu; nmitrako@northwell.edu; ttaylor6@northwell.edu; dbenjamin3@northwell.edu; tclouden@northwell.edu; djoseph8@northwell.edu',
+        "carbon_copy": 'danselmin@northwell.edu; nmitrako@northwell.edu; ttaylor6@northwell.edu; dbenjamin3@northwell.edu; tclouden@northwell.edu; djoseph8@northwell.edu',
         "name_format": "{file_path}/{year_str}{month_str}{day_str}_PAANS_BOT_v2_OUTBOUND.xlsx",
         "drop_columns": [
             'Retrieval Status', 
@@ -907,7 +931,7 @@ System.IndexOutOfRangeException: Index was outside the bounds of the array.
         ],
     },
     "BD IS Printing": {
-        "BotName":"Bad Debt - Printing Itemized Statement",
+        "BotName":"BADDEBT-PrintingItemizedStatement",
         "file_path": "M:/CPP-Data/Sutherland RPA/BD IS Printing",
         "columns": [
             "POLICYID",
@@ -966,7 +990,7 @@ System.IndexOutOfRangeException: Index was outside the bounds of the array.
             "RetrievalDescription": "Retrieval Description",
             "Reason": "Reason",
         },
-        "carbon_copy": 'avais@northwell.edu; aharrison7@northwell.edu; bcerami@northwell.edu; CSchumacher1@northwell.edu; SFerebee@northwell.edu; ssirico@northwell.edu; cchandler1@northwell.edu; dcurtin1@northwell.edu',
+        "carbon_copy": 'avais@northwell.edu; aharrison7@northwell.edu; bcerami@northwell.edu; CSchumacher1@northwell.edu; SFerebee@northwell.edu; ssirico@northwell.edu; cchandler1@northwell.edu; eromero12@northwell.edu',
         "name_format": "{file_path}/{year_str}/{year_str}{month_str}{day_str}_PAANS_BADDEBT_IB_BOT_OUTBOUND.xlsx",
         "drop_columns": [
             'Retrieval Status', 
@@ -1043,7 +1067,7 @@ System.IndexOutOfRangeException: Index was outside the bounds of the array.
             "RetrievalDescription": "Retrieval Description",
             "Reason": "Reason",
         },
-        "carbon_copy": 'rmuncipinto@northwell.edu; nmitrako@northwell.edu',
+        "carbon_copy": 'danselmin@northwell.edu; nmitrako@northwell.edu',
         "name_format": "{file_path}/{year_str}{month_str}{day_str}.NSH.NCOA_OUTBOUND.xlsx",
         "ind_name_format": "{file_path}/{year_str}{month_str}{day_str}.NSH.NCOA{index_num}_OUTBOUND*.xlsx",
         "drop_columns": [
